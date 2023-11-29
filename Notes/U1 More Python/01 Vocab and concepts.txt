@@ -1,0 +1,21 @@
+Datatypes
+    - The type of data you're working with
+    - Different types of data have Different types of operations
+    - Ex: int, str, float, booleans, list, dict, set, sequences
+    
+Primative types
+    - Type of data built into the language
+    - In python we have str, int, float, and booleans
+    
+Constants
+    - Values that don't change
+    - We typically use all caps to indicate a Constants
+    - Ex: WIDTH
+
+Primary Control Constructs
+    - sequences - code is gonna run in a specific order, top down, functions, etc
+    - Selection - the idea of the code being able to run certain bits of code instead of others (different paths)
+    - Repetion  - running a specific set of code over and over again
+                1. Iteration - like a for/while loop
+                2. Recursion - a function that calls itself
+                
