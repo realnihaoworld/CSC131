@@ -1,0 +1,23 @@
+Terms:
+
+Object - a representation of a real world thing in your code
+
+Class - blueprint for an object
+
+Instantiation -the act of creating an instance of a class 
+
+Objects have:
+    1. State - the collection of all the attributes, defines how it is unique
+    2. Behavior - the collection of actions that the object can do. 
+
+Collective, the state and behavior are referred to as members of the class
+
+Instance variables - variables that belong to a specific instance
+
+Class variables - variables that belong to the class (the same for all instances)
+
+Constructor - the method (function) that initializes an instance
+
+Magic Functions/Dunder Methods - python's functions that start and end with double underscores
+
+Dot operator - used to access the attributes and methods of an object or class 
