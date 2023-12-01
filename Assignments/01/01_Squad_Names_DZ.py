@@ -14,7 +14,7 @@ def read_file(file_name):
     list = []
     with open(file_name) as f:
         for line in f:
-            list.append(line)
+            list.append(line.lower().strip("\n"))
     
     return list
 
@@ -22,12 +22,12 @@ def read_file(file_name):
 # that represents whether the first string begins with the second
 # string.
 def begin(name, search):
-    pass
+    return name.startswith(search)
     
 # A function that receives two string arguments and returns a boolean
 # that represents whether the first string ends with the second string.
 def end(name, search):
-    pass
+    return name.endswith(search)
     
 # A function that receives two string arguments and returns a boolean
 # that represents whether the first string contains the second string.
@@ -41,6 +41,22 @@ def contain(name, search):
 # beginning. The second element in the number of names in which the 
 # substring appears at the end. The third element in the number of
 # names that contain the substring.
+def calculate(name_list, substring):
+    results = [0, 0, 0]
+    
+    for name in name_list:
+        if begin(name, substring):
+            results[0] += 1
+            
+    for name in name_list:
+        if end(name, substring):
+            results[1] += 1
+            
+    for name in name_list:
+        if contain(name, substring):
+            results[2] += 1
+            
+    return results
 
 ######################## MAIN #####################################
 # prompt the user for the file name
@@ -49,7 +65,7 @@ while True:
         file_name = input("What file do you want to open? ")
 
         if file_name != "input.txt":
-         raise NameError
+            raise NameError
         break
         
     except NameError:
@@ -62,12 +78,14 @@ name_list = read_file(file_name)
 print(f"The file has {len(name_list)} names in it")
 
 # prompt the user for the substring they want to search for
-search_string = input("What name (or substring) are you interested in searching for? ")
+search_string = input("What name (or substring) are you interested in searching for? ").lower()
 
 # calculate the search statistics
-
+stats_list = calculate(name_list, search_string)
 
 # print out the results of the search.
 print("--------------------------------------------------")
-
+print(f"{stats_list[0]} start with this string")
+print(f"{stats_list[1]} end with this string")
+print(f"{stats_list[2]} contain this string")
 print("--------------------------------------------------")
