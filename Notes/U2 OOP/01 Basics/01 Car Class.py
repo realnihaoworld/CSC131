@@ -16,9 +16,9 @@ class Car:
         self.x_position = 0
         self.y_position = 0
         
-    def forward(self):
-        self.x_position += 1
-    
+    def forward(self, amount=1):
+        self.x_position += amount
+        
     def backward(self):
         self.x_position -= 1
 

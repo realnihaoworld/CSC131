@@ -1,0 +1,21 @@
+Concepts:
+
+getters/accessors
+    - used to add functionality when getting state (attributes)
+    - In many languages, the developers can decide that the state is
+      "private", meaning it can only change from within the class definition.
+      python is not like this.
+    
+    
+setters/mutators
+    - used to add functionality when setting state
+    - In many languages, the developers can decide that the state is
+      "private", meaning it can only change from within the class definition.
+      python is not like this.
+
+decorators
+    - a way to modify a function in python
+    - Ex: @property
+    
+syntactic sugar
+    - the idea of a programming language providing a simple way to accomplish something more complex
