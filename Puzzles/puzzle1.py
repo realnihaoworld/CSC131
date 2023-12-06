@@ -6,7 +6,7 @@ total = 0
 
 one_million = 1000001
 
-for x in range(1, one_million):
+for x in range(1, 100000000):
     y = str(x)
     total += y.count('0')
 

@@ -10,6 +10,18 @@ class Dog:
         self.favorite_chew = "bone"
     
     @property
+    def name(self):
+        return self._name.title()
+    
+    # no underscore causes recursive call
+    # you can call it whatever you want but the standard is '_'
+    # intended to be protected
+    
+    @name.setter
+    def name(self, new_name):
+        self._name = new_name
+    
+    @property
     def favorite_chew(self):
         return self._favorite_chew
     
