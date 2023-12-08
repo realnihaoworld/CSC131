@@ -1,0 +1,4 @@
+The 'object' class in python is the top level parent class
+    for all classes (whether you state it or not)
+
+Inheritance from it is implicit (we don't have to state it)
