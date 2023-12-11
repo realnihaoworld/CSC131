@@ -40,13 +40,32 @@ class Fraction:
         
         if self.num == 0:
             self.den = 1
-            
+    
+    # operator overloading
     def __add__(self, other: 'Fraction') -> 'Fraction':
         new_num = self.num * other.den + self.den * other.num
         new_den = self.den * other.den
         result = Fraction(new_num, new_den)
         return result
-            
+    
+    def __sub__(self, other: 'Fraction') -> 'Fraction':
+        new_num = self.num * other.den - self.den * other.num
+        new_den = self.den * other.den
+        result = Fraction(new_num, new_den)
+        return result
+
+    def __mul__(self, other: 'Fraction') -> 'Fraction':
+        new_num = self.num * other.num
+        new_den = self.den * other.den
+        result = Fraction(new_num, new_den)
+        return result
+        
+    def __truediv__(self, other: 'Fraction') -> 'Fraction':
+        new_num = self.num * other.den
+        new_den = self.den * other.num
+        result = Fraction(new_num, new_den)
+        return result
+
     def __str__(self) -> str:
         return f"{self.num} / {self.den}"
 
@@ -60,4 +79,13 @@ print(f2)
 
 f3 = f2 + f1
 
+f4 = f1 - f2
+
+f5 = f2 * f1
+
+f6 = f1 / f2
+
 print(f3)
+print(f4)
+print(f5)
+print(f6)
