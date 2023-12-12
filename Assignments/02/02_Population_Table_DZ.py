@@ -82,4 +82,10 @@ print(frequency_list)
 print("-" * 40)
 print("Population\t\tFrequency")
 
+lower = min_value
+upper = interval
+for x in range(0, len(frequency_list)):
+    print(f"{lower}-{upper}\t\t{frequency_list[x]}")
+    lower += interval
+    upper += interval
 print("-" * 40)
