@@ -10,7 +10,47 @@
 # SaleItem also has a applySale function that adjusts the price of the
 # item using the percentage provided as an argument to that function.
 class SaleItem:
-
+    
+    def __init__(self, name, cost, price):
+        self.name = name
+        self.cost = cost
+        self.price = price
+    
+    @property
+    def name(self) -> str:
+        return self._name
+    
+    @name.setter
+    def name(self, value:str) -> None:
+        self._name = value
+    
+    @property
+    def cost(self) -> float:
+        return self._cost
+    
+    @cost.setter
+    def cost(self, value:float) -> None:
+        if value < 0:
+            self._cost = 0
+        else:
+            self._cost = value
+    
+    @property
+    def price(self) -> float:
+        return self._price
+        
+    @price.setter
+    def price(self, value:float) -> None:
+        if value < 0:
+            self._price = 0
+        else:
+            self._price = value
+    
+    def profit(self):
+        pass
+    
+    def applySale(self):
+        pass
 
 
 
