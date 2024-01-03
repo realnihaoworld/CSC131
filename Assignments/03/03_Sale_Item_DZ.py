@@ -46,11 +46,12 @@ class SaleItem:
         else:
             self._price = value
     
-    def profit(self):
-        pass
+    def profit(self) -> float:
+        return self.price - self.cost
     
-    def applySale(self):
-        pass
+    def applySale(self, percent):
+        sale = float((100 - percent) / 100)
+        self.price *= sale
 
 
 
