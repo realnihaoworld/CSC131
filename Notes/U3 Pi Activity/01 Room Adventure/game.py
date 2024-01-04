@@ -1,7 +1,8 @@
 from room import Room
 from time import sleep
-
+import pygame
 class Game:
+    pygame.mixer.init()
     
     def __init__(self):
         self.inventory = []
@@ -74,11 +75,15 @@ class Game:
             self.response = f"Grabbed {noun}"
     
     
-    def play(self):
+    def run(self):
+        pygame.mixer.init()
+        death_sfx = pygame.mixer.Sound('soundfiles/death.mp3')
         while self.running:
             
             # did we die?
             if self.current_room is None:
+                death_sfx.play()
+                sleep(3)
                 self.death()
                 break
             
