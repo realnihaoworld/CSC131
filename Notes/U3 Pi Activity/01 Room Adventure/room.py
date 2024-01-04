@@ -79,10 +79,7 @@ class Room:
         result = ''
         
         # room name
-        result += f"Location: {self.name}\n\n"
-        
-        # room map
-        #if self.exit_destinations[]
+        result += f"Location: {self.name}\n"
         
         # items in room
         if len(self.items) != 0:

@@ -1,6 +1,9 @@
 from room import Room
 from time import sleep
+from time import time
 import pygame
+import random
+from operator import add, sub, mul
 class Game:
     pygame.mixer.init()
     
@@ -10,7 +13,6 @@ class Game:
         self.response = ""
         self.running = True
         self.create_rooms()
-    
     
     def create_rooms(self):
         
@@ -74,6 +76,32 @@ class Game:
             self.current_room.delete_grabbable(noun)
             self.response = f"Grabbed {noun}"
     
+    def handle_use(self, noun):
+        self.response = "Invalid Usable"
+        if noun in self.inventory:
+            self.inventory.remove(noun)
+            self.response = f"Used {noun}"
+    
+    def handle_math(self):
+        print("Complete this math problem in 5 seconds to gain a coin or you die!")
+        sleep(3)
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
+        operations = (add, sub, mul)
+        op = random.choice(operations)
+        
+        answer = op(a, b)
+        start_time = time()
+        ans = float(input(f'What is {a} {op} {b}'))
+        end_time = time()
+        elapsed_time = end_time - start_time
+        
+        if ans == answer:
+            print("Correct!")
+        else:
+            print("Wrong!")
+            
+        print(elapsed_time)
     
     def run(self):
         pygame.mixer.init()
@@ -93,14 +121,16 @@ class Game:
             if len(self.inventory) != 0:
                 status += f"\n You are carrying: "  # noqa: F541
                 status += ", ".join(self.inventory)
+                status += "\nEnter 'do math' to gain more coins"
             else:
                 status += "\nYou have no items in your inventory"
+                status += "\nEnter 'do math' to gain a coin"
                 
             print(status)
                 
             # create a default response for this loop
             self.response = "Invalid input. Try the format [verb] [noun]."
-            self.response += "\nI only understand the verbs 'go', 'take', and 'look'."
+            self.response += "\nI only understand the verbs 'go', 'take', 'use', 'do' and 'look'."
             self.response += "\nType 'quit' to exit."
             
             # get input from users
@@ -121,6 +151,10 @@ class Game:
                     self.handle_look(noun)
                 elif verb == "take":
                     self.handle_take(noun)
+                elif verb == "use":
+                    self.handle_use(noun)
+                elif verb == "do":
+                    self.handle_math()
                     
             print(self.response)
             sleep(1)
