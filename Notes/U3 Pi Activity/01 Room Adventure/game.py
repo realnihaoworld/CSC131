@@ -83,6 +83,8 @@ class Game:
             self.response = f"Used {noun}"
     
     def handle_math(self):
+        pygame.mixer.init()
+        win_sfx = pygame.mixer.Sound('soundfiles/win.mp3')
         # print instructions
         print("Complete this math problem in 5 seconds to gain a coin or you die!")
         sleep(2)
@@ -112,7 +114,12 @@ class Game:
         
         if ans == answer and elapsed_time < 5:
             self.response = "Correct!"
+            win_sfx.play()
+            sleep(2)
             self.inventory.append('coin')
+        elif elapsed_time >= 5:
+            self.response = "You took too long!"
+            self.current_room = None
         else:
             self.response = "Wrong!"
             self.current_room = None
