@@ -83,25 +83,41 @@ class Game:
             self.response = f"Used {noun}"
     
     def handle_math(self):
+        # print instructions
         print("Complete this math problem in 5 seconds to gain a coin or you die!")
-        sleep(3)
+        sleep(2)
+        
+        # randomly generate numbers and operations
         a = random.randint(1, 10)
         b = random.randint(1, 10)
-        operations = (add, sub, mul)
+        operations = [add, sub, mul]
         op = random.choice(operations)
         
+        # chooses the correct symbol according to the operation
+        symbols = ['+', '-', '*']
+        index = operations.index(op)
+        
+        # calculate the correct answer
         answer = op(a, b)
+        
+        # start the timer
         start_time = time()
-        ans = float(input(f'What is {a} {op} {b}'))
+        
+        # ask player for answer
+        ans = float(input(f'{a} {symbols[index]} {b} = '))
+        
+        # stop timer and calculate elapsed time
         end_time = time()
         elapsed_time = end_time - start_time
         
-        if ans == answer:
-            print("Correct!")
+        if ans == answer and elapsed_time < 5:
+            self.response = "Correct!"
+            self.inventory.append('coin')
         else:
-            print("Wrong!")
+            self.response = "Wrong!"
+            self.current_room = None
             
-        print(elapsed_time)
+        print(f'You took {elapsed_time:.2f} seconds')
     
     def run(self):
         pygame.mixer.init()
@@ -160,6 +176,6 @@ class Game:
             sleep(1)
             
     def death(self):
-        print("You fell out a window and died.")
+        print("You died rip.")
         self.running = False
         

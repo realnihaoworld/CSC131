@@ -5,8 +5,8 @@ class Car:
     def __init__(self):
         self.horsepower = horsepower: int
         self.weight = weight: int
-        self.make = make: str
-        self.model = model: str
+        self.make = make
+        self.model = model
     
     @property
     def horsepower(self):
@@ -22,4 +22,4 @@ class Car:
     
     @weight.setter
     def weight(self, value):
-        self._weight = weight
+        self._weight = value
