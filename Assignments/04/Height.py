@@ -51,3 +51,26 @@ class Height:
         
     ####### overloaded mathematical and comparison operators ########
     ############## i.e. +, -, <, <=, >, >=, ==, != ##################
+    def __add__(self, other: 'Height') -> 'Height':
+        pass
+    
+    def __sub__(self, other: 'Height') -> 'Height':
+        pass
+        
+    def __lt__(self, other: 'Height') -> 'Height':
+        pass
+    
+    def __le__(self, other: 'Height') -> 'Height':
+        pass
+    
+    def __gt__(self, other: 'Height') -> 'Height':
+        pass
+        
+    def __ge__(self, other: 'Height') -> 'Height':
+        pass
+    
+    def __eq__(self, other: 'Height') -> 'Height':
+        pass
+        
+    def __ne__(self, other: 'Height') -> 'Height':
+        pass
