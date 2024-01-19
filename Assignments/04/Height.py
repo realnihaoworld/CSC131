@@ -1,7 +1,7 @@
 #####################################################################
-# author:       
-# date:        
-# description: 
+# author: Danison Zhang
+# date: 1/18/24
+# description: Program 4
 #####################################################################
 
 # Don't forget to name this file Height.py and place it in the same
@@ -52,25 +52,52 @@ class Height:
     ####### overloaded mathematical and comparison operators ########
     ############## i.e. +, -, <, <=, >, >=, ==, != ##################
     def __add__(self, other: 'Height') -> 'Height':
-        pass
+        total_inches = (self.feet * 12) + (other.feet * 12) + self.inch + other.inch
+        feet = total_inches // 12
+        inches = total_inches % 12
+        result = Height(feet, inches)
+        return result
     
     def __sub__(self, other: 'Height') -> 'Height':
-        pass
+        self_inches = (self.feet * 12) + self.inch 
+        other_inches = (other.feet * 12) + other.inch
+        
+        total = self_inches - other_inches
+        if total < 0:
+            return Height()
+            
+        feet = total // 12
+        inches = total % 12
+        
+        result = Height(feet, inches)
+        return result
         
     def __lt__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() < other.inches():
+            return True
+        return False
     
     def __le__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() <= other.inches():
+            return True
+        return False
     
     def __gt__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() > other.inches():
+            return True
+        return False
         
     def __ge__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() >= other.inches():
+            return True
+        return False
     
     def __eq__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() == other.inches():
+            return True
+        return False
         
     def __ne__(self, other: 'Height') -> 'Height':
-        pass
+        if self.inches() != other.inches():
+            return True
+        return False
