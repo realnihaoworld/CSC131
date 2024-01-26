@@ -5,8 +5,8 @@ window = Tk()
 img = PhotoImage(file='ironman.png')
 
 l1 = Label(window, text="A Label")
-l1.grid(row=0, column=0)
-
+l1.grid(row=0, column=0, sticky=W)
+# could use sticky
 l2 = Label(window, text="Another Label")
 l2.grid(row=1, column=0, sticky=E)
 
@@ -15,6 +15,8 @@ l3.grid(row=2, columnspan = 2)
 
 l4 = Label(window, image=img)
 l4.grid(row=0, column=2, columnspan=2, rowspan=2)
+# if you were in a function you need
+# l4.image = img
 
 e1 = Entry(window)
 e1.grid(row=0, column=1)
