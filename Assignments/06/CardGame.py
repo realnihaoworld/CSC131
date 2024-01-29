@@ -88,5 +88,74 @@ class Deck():
                 result += f'{card}, '
             result +="]"
             return result
+    
+    def shuffle(self):
+        random.shuffle(self.cards)
+    
+    def draw(self):
+        if len(self.cards) == 0:
+            return None
+        else:
+            c = self.cards[0]
+            del self.cards[0]
+            return c
+    
+    def size(self) -> int:
+        return len(self.cards)
+    
 class Game:
-    pass
+    
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle()
+        self.deck.shuffle()
+    
+    @property
+    def deck(self) -> "Deck":
+        return self._deck
+    
+    @deck.setter
+    def deck(self, value) -> None:
+        self._deck = value
+        
+    def start(self):
+        print("-" * 40)
+        print("Welcome to a basic game.")
+        print("You and this program will take turns picking cards.")
+        print("The one with the highest value card wins")
+        print("-" * 40)
+        
+        answer = input("Are you ready to start? [Y/N] ")
+        
+        if answer.lower() == 'y':
+            self.play()
+        else:
+            self.end()
+        
+    def play(self):
+        p1 = self.deck.draw()
+        p2 = self.deck.draw()
+        print(f"You picked {p1}, and I picked {p2}")
+        
+        if p1 > p2:
+            print("YOU WIN")
+        elif p1 == p2:
+            print("DRAW")
+        else:
+            print("I WIN")
+        
+        answer = input("Would you like to play again? [Y/N] ")
+        
+        if answer.lower() == 'y' and self.deck.size() != 0:
+            self.play()
+        elif self.deck.size() == 0:
+            print("Not enough cards to play")
+            self.end()
+        else:
+            self.end()
+            
+    def end(self):
+        print("Sorry to see you go")
+        print("----Remaining cards-------")
+        print(self.deck)
+    
