@@ -69,7 +69,6 @@ class Deck(Card):
         for i in range(2, 11):
             for j in range(4):
                 self.cards.append(super().__init__(i, POSSIBLESUITS[j]))
-        
 
     @property
     def cards(self) -> list:
@@ -84,8 +83,8 @@ class Deck(Card):
             return "[--empty--]"
         else:
             result = "["
-            for _ in self.cards:
-                result += f'{Card.__str__(self)}, '
+            for card in self.cards:
+                result += f'{super().__str__()}, '
             result +="]"
             return result
 class Game:
