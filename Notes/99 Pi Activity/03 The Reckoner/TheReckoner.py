@@ -88,10 +88,30 @@ class MainGUI(Frame):
         self.display["text"] += value
     
     def evaluate(self):
-        pass
+        expr = self.display["text"]
+        try:
+            result = str(eval(expr))
+            self.set_display(result)
+        except:
+            self.set_display("ERROR")
+            
         
     def process(self, button):
-        pass
+        if button == "AC":
+            self.clear_display()
+        elif button == "=":
+            self.evaluate()
+        else:
+            self.append_display(button)
+    
+    # TODO: Assignment:
+    # 1. Clear the display at all appropriate times
+    #   - just evaluated something
+    #   - just got an error
+    # 2. Add functionality
+    # check phone for layout, equal sign spans over two columns
+    # 3. Limit display to 14 char, if longer, then put . . . at the end or use scientific notation
+    # ie. 12345678901...
     
 
 ## Main
