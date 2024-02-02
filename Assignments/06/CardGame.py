@@ -67,8 +67,8 @@ class Deck():
     def __init__(self):
         self.cards = []
         for i in range(2, 11):
-            for j in range(4):
-                self.cards.append(Card(i, POSSIBLESUITS[j]))
+            for type in POSSIBLESUITS:
+                self.cards.append(Card(i, type))
         # self.cards.append(super().__init__(2, "clubs"))
         # self.cards.append(super().__init__(3, "diamonds"))
     @property
