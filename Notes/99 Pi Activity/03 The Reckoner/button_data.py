@@ -5,7 +5,7 @@ button_data = [
     {"row": 1, "column": 0, "value": "("},
     {"row": 1, "column": 1, "value": ")"},
     {"row": 1, "column": 2, "value": "AC"},
-    {"row": 1, "column": 3, "value": "**"},
+    {"row": 1, "column": 3, "value": "<-"},
 
     {"row": 2, "column": 0, "value": "7"},
     {"row": 2, "column": 1, "value": "8"},
@@ -24,6 +24,10 @@ button_data = [
     
     {"row": 5, "column": 0, "value": "0"},
     {"row": 5, "column": 1, "value": "."},
-    {"row": 5, "column": 2, "value": "="},
+    {"row": 5, "column": 2, "value": ""},
     {"row": 5, "column": 3, "value": "+"},
+    
+    {"row": 6, "column": 0, "value": "="},
+    {"row": 6, "column": 2, "value": "**"},
+    {"row": 6, "column": 3, "value": "%"},
 ]
