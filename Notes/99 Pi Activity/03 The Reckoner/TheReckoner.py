@@ -149,6 +149,7 @@ class MainGUI(Frame):
     # !check phone for layout, equal sign spans over two columns
     # !3. Limit display to 14 char, if longer, then put . . . at the end or use scientific notation
     # !ie. 12345678901...
+    # TODO: calculate numbers with results bigger than 14 char
     
 
 ## Main
