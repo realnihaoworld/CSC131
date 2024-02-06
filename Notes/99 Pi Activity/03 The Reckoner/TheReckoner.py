@@ -104,8 +104,13 @@ class MainGUI(Frame):
         expr = self.display["text"]
         try:
             result = str(eval(expr))
-            self.set_display(result)
-            self.eval = True
+            if len(result) <= 11:
+                self.set_display(result)
+                self.eval = True
+            else:
+                short = result[0:11] + "..."
+                self.set_display(short)
+                self.eval = True
         except:
             self.set_display("ERROR")
             
