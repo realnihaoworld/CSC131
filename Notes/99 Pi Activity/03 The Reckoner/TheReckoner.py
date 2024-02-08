@@ -95,6 +95,7 @@ class MainGUI(Frame):
     def append_display(self, value):
         self.display["text"] += value
     
+    # delete the more recent character
     def backspace(self):
         current = self.display["text"]
         new_value = current[1:]
@@ -108,6 +109,7 @@ class MainGUI(Frame):
                 self.set_display(result)
                 self.eval = True
             else:
+            # checks if the result is over 14 char and shortens it to fit the screen
                 short = result[0:11] + "..."
                 self.set_display(short)
                 self.eval = True
