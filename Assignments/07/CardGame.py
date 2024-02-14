@@ -64,7 +64,8 @@ class Deck():
         self.cards = []
         for i in range(2, 11):
             for type in POSSIBLESUITS:
-                self.cards.append(Card(i, type))
+                image = f'{i}_of_{type}.png'
+                self.cards.append(PictureCard(i, type, image))
                 
     @property
     def cards(self) -> list:
@@ -99,7 +100,23 @@ class Deck():
         return len(self.cards)
 
 class PictureCard(Card):
-
+    
     def __init__(self, number, suit, imagefile: str):
         super().__init__(number, suit)
         self.imagefile = imagefile
+    
+    @property
+    def imagefile(self) -> str:
+        return self._imagefile
+    
+    @imagefile.setter
+    def imagefile(self, value):
+        p = './images/'
+        if os.path.isfile(f'{p}{value}'):
+            self._imagefile = value
+        else:
+            self._imagefile = 'default.png'
+    
+    def __str__(self):
+        Card.__str__(self)
+        return f'{self.imagefile}'
