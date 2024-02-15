@@ -118,5 +118,20 @@ class PictureCard(Card):
             self._imagefile = 'default.png'
     
     def __str__(self):
-        Card.__str__(self)
         return f'{self.imagefile}'
+
+class Game:
+    
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle()
+        self.deck.shuffle()
+    
+    @property
+    def deck(self) -> "Deck":
+        return self._deck
+    
+    @deck.setter
+    def deck(self, value) -> None:
+        self._deck = value
+        
