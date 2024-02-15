@@ -19,9 +19,11 @@ def play_game():
     if g1.deck.size() == 0:
         l3['text'] = "Out of cards. Press 'Quit' or 'Restart'"
     else:
+        # takes out 2 card objects from the list
         card1 = g1.deck.draw()
         card2 = g1.deck.draw()
         
+        # retrieves the str of the path to the png
         path1 = card1.imagefile
         path2 = card2.imagefile
         
@@ -35,10 +37,22 @@ def play_game():
         p2.image = img2
         
         l3['text'] = winner(card1, card2)
-        
-def restart():
-    pass
 
+# resets the deck and fills it up with new cards, then shuffles
+def restart():
+    g1.deck.reset()
+    g1.deck.shuffle()
+    
+    # resets the text and image to the default
+    l3['text'] = 'Who wins?'
+    defimg = config_image('default.png')
+    
+    p1.configure(image=defimg)
+    p1.image = defimg
+    
+    p2.configure(image=defimg)
+    p2.image = defimg
+    
 # configures the image to be able to display on tkinter
 def config_image(path):
     img = ImageTk.PhotoImage(Image.open(f'./images/{path}'))
@@ -99,7 +113,7 @@ s2.grid(row=2, column=5)
 b1 = Button(window, text="Play", background='light blue', command=lambda: play_game())
 b1.grid(row=4, column=0, sticky=W, ipadx=10)
 
-b2 = Button(window, text="Restart", background='light blue')
+b2 = Button(window, text="Restart", background='light blue', command=lambda: restart())
 b2.grid(row=4, column=1, sticky=W, ipadx=10)
 
 b3 = Button(window, text="Quit", background='light blue', command=window.destroy)

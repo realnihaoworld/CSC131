@@ -61,11 +61,7 @@ class Card:
 class Deck():
     
     def __init__(self):
-        self.cards = []
-        for i in range(2, 11):
-            for type in POSSIBLESUITS:
-                image = f'{i}_of_{type}.png'
-                self.cards.append(PictureCard(i, type, image))
+        self.cards = self.populate()
                 
     @property
     def cards(self) -> list:
@@ -98,6 +94,17 @@ class Deck():
     
     def size(self) -> int:
         return len(self.cards)
+        
+    def populate(self):
+        list = []
+        for i in range(2, 11):
+            for type in POSSIBLESUITS:
+                image = f'{i}_of_{type}.png'
+                list.append(PictureCard(i, type, image))
+        return list
+                
+    def reset(self):
+        self.cards = self.populate()
 
 class PictureCard(Card):
     
